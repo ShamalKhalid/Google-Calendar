@@ -38,7 +38,7 @@ const Todo = () => {
   return (
     <div className="mt-5">
       {TodoList.map((todo, index) => (
-        <div key={index} style={{ backgroundColor: `${todo.Color}` }}>
+        <div key={index} style={{ backgroundColor: `${todo.Color}` }} className="mt-4 p-2">
           <h1>{todo.Title}</h1>
           <p>{todo.Description}</p>
           <p>{todo.Date}</p>
