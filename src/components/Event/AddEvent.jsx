@@ -1,26 +1,35 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import GlobalContext from "../../contexts/GlobalContext";
 const labelClass = ["indigo", "gray", "green", "blue", "red", "purple"];
-// import dayjs from "dayjs";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase/Firebase";
 
 export default function AddEvent() {
+  const [title, setTitle] = useState("");
   const { setShowAddEvent, daySelected } = useContext(GlobalContext);
   const [description, setDescription] = useState("");
   const [selectedLabel, setSelectedLabel] = useState(labelClass[0]);
-  const [title, setTitle] = useState("");
+  const [isDone, setisDone] = useState(true);
 
-  const handleSubmit = (e) => {
-    console.log(e);
-    // const formData = new FormData(e.currentTarget)
-  }
+  const TodoCollectionRef = collection(db, "Todos");
 
-  // debug
-  // const currentDate = daySelected ? daySelected : dayjs();
+  const onSubmitTodo = async () => {
+    try {
+      await addDoc(TodoCollectionRef, {
+        Title: title,
+        Description: description,
+        Date: daySelected.format("dddd, MMMM DD"),
+        Color: selectedLabel,
+      });
+      setShowAddEvent(false)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // end
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
-      <form className="bg-white rounded-lg shadow-2xl w-1/4" onSubmit={handleSubmit}>
+      <div className="bg-white rounded-lg shadow-2xl w-1/4">
         <header className="eventHead px-4 py-2 flex justify-between items-center">
           <span className="material-icons-outlined text-gray-400">
             drag_handle
@@ -82,11 +91,12 @@ export default function AddEvent() {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white"
+            onClick={onSubmitTodo}
           >
             Save
           </button>
         </footer>
-      </form>
+      </div>
       {/* <div className="bg-purple-500">
         <div className="bg-red-500">
           <div className="bg-indigo-500 ">
