@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body,
 html {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden; /* Prevent scrollbar on the whole page */
+  font-family: "Poppins", Arial, sans-serif;
 }
 .header {
   height: 5em;
@@ -86,26 +88,21 @@ html {
 .calendarName {
   font-size: x-large;
   color: #3c4043;
-  margin-left: 1rem;
-  font-family: "Google Sans", Roboto, Arial, sans-serif;
 }
 .buttonToday {
   width: 4.5rem;
   height: 2.5rem;
-  margin-left: 2rem;
   border: 0.5px;
   border-style: solid;
   border-color: #dadce0;
   background-color: transparent;
   cursor: pointer;
-  font-family: "Roboto, Helvetica, Arial, sans-serif";
   color: #3c4043;
   font-weight: 600;
   justify-content: center;
 }
 
 .arrow {
-  margin-left: 3rem;
   color: #6d7075;
 }
 
