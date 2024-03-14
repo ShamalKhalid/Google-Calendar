@@ -28,7 +28,7 @@ export function HomeHeader() {
 
   return (
     <div className="flex justify-between px-5">
-      <div className="header flex items-center">
+      <div className="header flex items-center gap-3">
         <Logo />
         <p className="calendarName">Calendar</p>
         <button onClick={handleReset} className="buttonToday rounded py-2 px-2">
@@ -44,7 +44,7 @@ export function HomeHeader() {
             <span className="material-symbols-outlined">arrow_forward_ios</span>
           </button>
         </div>
-        <h2 className="ml-4 text-xl font-bold monthText">
+        <h2 className="text-xl font-bold monthText">
           {dayjs()
             .set("month", monthIndex)
             .startOf("month")
